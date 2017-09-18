@@ -1,0 +1,135 @@
+<html ng-app="myApp">
+
+<head>
+    <title>Lista de compras</title>
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="js-angular/modules/shopping.module.js"></script>
+    <script src="js-angular/controllers/shopping.controller.js"></script>
+    <script src="js-angular/controllers/events.controller.js"></script>
+
+</head>
+<style>
+    #product.ng-invalid {
+        background-color: lightblue;
+    }
+
+    .listCont {
+        margin: auto;
+        text-align: center;
+    }
+
+    .listCont>#textQuantity {
+        font-size: 24px
+    }
+
+    .imgAlterQuantity:hover {
+        cursor: pointer;
+    }
+
+    .imgAlterQuantity:focus {
+        outline: none;
+    }
+
+    .allProducts {
+        text-align: center;
+        margin: 10px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th{
+        border-radius: 1px;     
+        text-align: center;
+        border-bottom: 1px solid #ddd;  
+        height: 100px;
+    }
+    .allProducts> tbody> tr {
+        border-radius: 1px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    .allProducts> tbody>tr> td{
+        padding: 2px;
+    }
+    .box{
+        margin-top: 15px
+    }
+   
+
+</style>
+
+<body>
+    <!-- <md-content ng-controller="ListShoppingController" class="md-padding"> -->
+    <div ng-cloak ng-controller="ListShoppingController">
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">List of shopping</span>
+                        </md-card-title-text>
+                    </md-card-title>
+
+                    <md-card-content>
+                        <input placeholder="search..." type="text" ng-model="item.product">
+                        <table class="allProducts" width="100%">
+                            <thead>
+                                <th>Name</th>
+                                <th>Buy</th>
+                                <th>Quantity</th>
+                            </thead>
+                            <tbody ng-repeat="item in items | filter:item.product">
+                                <tr>
+                                    <td>
+                                        <span> {{item.product }}</span>
+                                    </td>
+                                    <td>
+                                       <div class="box"> 
+                                           <md-checkbox ng-click="setCheked(item)" ng-model="item.buy"  aria-label="Checkbox 1"></md-checkbox>
+                                       </div>
+                                    </td>
+                                    <td>
+                                        <div class="listCont">
+                                            <img class="imgAlterQuantity" ng-click="alterQuantity(item,'-')" src="icons/remove.png" alt="">
+                                            <span id="textQuantity">{{item.quantity }}</span>
+                                            <img class="imgAlterQuantity" ng-click="alterQuantity(item,'+')" src="icons/add.png" alt="">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-card-content>
+                </md-card>
+
+            </div>
+            <md-card flex>
+                <h2>Items</h2>
+                <md-card-content>
+                    <div style="display:block">
+                        <form name="formItem" novalidate>
+                            <input id="product" placeholder="product" name="product" type="text" ng-model="myItem.product" required>
+                            <input placeholder="quantity" name="quatity" type="number" ng-model="myItem.quantity" required>
+                            <button type="submit" ng-click="setItem()" ng-disabled="formItem.product.$invalid || formItem.quatity.$invalid"> Add product</button>
+                        </form>
+                        <div ng-show="formItem.product.$invalid">*Product</div>
+                        <div ng-show="formItem.quatity.$invalid">*Quantity</div>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </md-content>
+    </div>
+</body>
+
+</html>
