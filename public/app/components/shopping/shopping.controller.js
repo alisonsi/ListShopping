@@ -2,7 +2,11 @@
 app.controller("ListShoppingController", function ($scope) {
     $ = $scope;
     //model para adicição de novos produtos
-    $.myItem;
+    $.myItem = {
+        product: "",
+        quantity: 0,
+        buy:false
+    };
 
     //array com todos os produtos adicionados
     $scope.items = []
@@ -20,7 +24,8 @@ app.controller("ListShoppingController", function ($scope) {
             }
         )
         setLocalStorage("lista",$scope.items)
-        $scope.myItem.product = $scope.myItem.quantity = "";
+        $scope.myItem.product = " ";
+        $scope.myItem.quantity = 0;
     }
     $scope.setCheked = function (checked) {
 

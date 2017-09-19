@@ -1,0 +1,58 @@
+body {
+    width:100%;
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+  }
+  
+#product.ng-invalid {
+    background-color: lightblue;
+}
+
+.listCont {
+    margin: auto;
+    text-align: center;
+}
+
+.listCont>#textQuantity {
+    font-size: 24px
+}
+
+.imgAlterQuantity:hover {
+    cursor: pointer;
+    background-color: #F0A3BA;
+    border-radius: 2px;
+}
+
+.imgAlterQuantity:focus {
+    outline: none;
+}
+
+.allProducts {
+    text-align: center;
+    margin: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border-radius: 1px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    height: 100px;
+}
+
+.allProducts>tbody>tr {
+
+    border-radius: 1px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.allProducts>tbody>tr>td {
+    padding: 2px;
+}
+
+.box {
+    margin-top: 15px
+}
