@@ -1,4 +1,4 @@
-let app = angular.module("myApp",["ngMaterial"])
+let app = angular.module("myApp",["ngRoute","ngMaterial"])
 app.controller("AppController",function($scope){
     $ = $scope;
     $.swape = false;

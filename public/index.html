@@ -5,27 +5,33 @@
     <link rel="shortcut icon" href="icons/cart.png">
     
     <!-- Angular Material style sheet -->
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link rel="stylesheet" href="assets/libs/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Angular Material requires Angular.js Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="assets/libs/angular/angular.min.js"></script>
+    <script src="assets/libs/angular-animate/angular-animate.min.js"></script>
+    <script src="assets/libs/angular-aria/angular-aria.min.js"></script>
+    <script src="assets/libs/angular-messages/angular-messages.min.js"></script>
 
     <!-- Angular Material Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="assets/libs/angular-material/angular-material.min.js"></script>
+    <script src="assets/libs/angular-route/angular-route.js"></script>    
+    
     <script src="app/app.js"></script>
+    <script src="app/components/shopping/shopping.service.js"></script>    
     <script src="app/components/shopping/shopping.controller.js"></script>
+    
 </head>
+
 <style>
    
 </style>
 
 <body ng-app="myApp">
    <div ng-controller="ListShoppingController" ng-include="'app/components/shopping/shopping.view.html'"></div>
+    <div ng-if="" > heheheeh</div>
    <div ng-controller="AppController" ng-show="swape">
 
        <div  ng-include="'app/components/testes/test.html'"></div>
