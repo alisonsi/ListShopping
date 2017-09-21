@@ -4,7 +4,39 @@ body {
     margin:0;
     box-sizing: border-box;
   }
-  
+.content{
+    margin: auto;
+    width: 60%;
+
+}
+
+.actionsProducts:focus{
+    outline: none;
+}
+
+.actionsProducts:hover{
+    cursor: pointer;
+
+}
+.addProducts{
+    color: red
+}
+
+.removeProductLight{
+    color: #1A237E;
+}
+.removeProductLight:hover{
+    color: #303F9F;
+}
+.removeProductDark{
+    color:#303F9F;
+}
+.removeProductDark:hover{
+    color: #1A237E;
+}
+.removeProduct:hover{
+    color: #3F51B5
+}
 #product.ng-invalid {
     background-color: lightblue;
 }

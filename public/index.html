@@ -1,9 +1,9 @@
-<html >
+<html>
 
 <head>
     <title>Lista de compras</title>
     <link rel="shortcut icon" href="icons/cart.png">
-    
+
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="assets/libs/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
@@ -17,26 +17,38 @@
 
     <!-- Angular Material Library -->
     <script src="assets/libs/angular-material/angular-material.min.js"></script>
-    <script src="assets/libs/angular-route/angular-route.js"></script>    
-    
+    <script src="assets/libs/angular-route/angular-route.js"></script>
+
     <script src="app/app.js"></script>
-    <script src="app/components/shopping/shopping.service.js"></script>    
+    <script src="app/services.js"></script>
     <script src="app/components/shopping/shopping.controller.js"></script>
-    
+    <script src="app/components/addProducts/addProducts.controller.js"></script>
+
+    <script src="app/routes.js"></script>
+
+
 </head>
 
 <style>
-   
+
 </style>
 
 <body ng-app="myApp">
-   <div ng-controller="ListShoppingController" ng-include="'app/components/shopping/shopping.view.html'"></div>
+    <!-- <div ng-controller="ListShoppingController" ng-include="'app/components/shopping/shopping.view.html'"></div>
     <div ng-if="" > heheheeh</div>
    <div ng-controller="AppController" ng-show="swape">
 
        <div  ng-include="'app/components/testes/test.html'"></div>
-   </div>
-   
+   </div> -->
+
+    <div class="content">
+        <div ng-cloak>
+            <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex ng-view></div>
+            </md-content>
+        </div>
+        
+    </div>
 </body>
 
 </html>

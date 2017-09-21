@@ -1,121 +1,89 @@
-<div ng-cloak>
-    <md-content class="md-padding" layout-xs="column" layout="row">
-        <div flex layout="column">
-            <md-card>
-                <md-card-title style="background-color:#3F51B5">
-                    <md-card-title-text>
-                        <span class="md-headline">Shopping</span>
-                        <span class="md-subhead">Products</span>
+<md-card>
+    <md-card-title style="background-color:#3F51B5">
+        <md-card-title-text>
+            <span class="md-headline">Shopping</span>
+            <span class="md-subhead">Products</span>
+            <div layout="column" layout-align="end end">
+                <div class="removeProductDark">
+                   <a href="#/addProducts"><img class="actionsProducts material-icons " src="../../assets/icons/addProducts.png"></a> 
+                </div>
+                <!-- <i ng-href="#/addProducts" class="material-icons">add_circle_outline</i> -->
+            </div>
 
-                    </md-card-title-text>
-                </md-card-title>
-                <md-input-container class="md-icon-float md-block">
-                    <!-- Use floating label instead of placeholder -->
-                    <label><img src="../../assets/icons/search.png"> search...</label>
-                    <input type="text" ng-model="item.product" md-maxlength="30">
-                </md-input-container>
-                <md-card-content style="padding:0px">
-                    <table class="allProducts" width="100%">
-                        <thead style="background-color:rgba(189, 182, 182, 0.33)">
-                            <th>Name</th>
-                            <th>Buy</th>
-                            <th>Quantity</th>
-                        </thead>
-                        <tbody ng-repeat="item in items | filter:item.product">
-                            <tr ng-if="$odd" style="background-color:rgba(189, 182, 182, 0.52)">
-                                <td>
+        </md-card-title-text>
+    </md-card-title>
+    <md-input-container class="md-icon-float md-block">
+        <!-- Use floating label instead of placeholder -->
+        <label><img src="../../assets/icons/search.png"> search...</label>
+        <input type="text" ng-model="item.product" md-maxlength="30">
+    </md-input-container>
+    <md-card-content style="padding:0px">
+        <table class="allProducts" width="100%">
+            <thead style="background-color:rgba(189, 182, 182, 0.33)">
+                <th>Name</th>
+                <th>Buy</th>
+                <th>Quantity</th>
+                <th>Priority</th>
+                <th>-</th>
+            </thead>
+            <tbody ng-repeat="item in items | filter:item.product">
+                <tr ng-if="$odd" style="background-color:rgba(189, 182, 182, 0.52)">
+                    <td>
 
-                                    <span> {{item.product }}</span>
-                                </td>
-                                <td>
-                                    <div class="box">
-                                        <md-checkbox ng-model="item.buy" ng-click="setCheked(item)" aria-label="Checkbox 1"></md-checkbox>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="listCont">
-                                        <img class="imgAlterQuantity" ng-click="alterQuantity(item,'-')" src="../../assets/icons/remove.png" alt="">
-                                        <span id="textQuantity">{{item.quantity }}</span>
-                                        <img class="imgAlterQuantity" ng-click="alterQuantity(item,'+')" src="../../assets/icons/add.png" alt="">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr ng-if="$even" style="background-color:#FFFFFF">
-                                <td>
+                        <span> {{item.product }}</span>
+                    </td>
+                    <td>
+                        <div class="box">
+                            <md-checkbox ng-model="item.buy" ng-click="setCheked(item)" aria-label="Checkbox 1"></md-checkbox>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="listCont">
+                            <img class="imgAlterQuantity" ng-click="alterQuantity(item,'-')" src="../../assets/icons/remove.png" alt="">
+                            <span id="textQuantity">{{item.quantity }}</span>
+                            <img class="imgAlterQuantity" ng-click="alterQuantity(item,'+')" src="../../assets/icons/add.png" alt="">
+                        </div>
+                    </td>
+                    <td>
+                        {{item.priority}}
+                    </td>
+                    <td>
 
-                                    <span> {{item.product }}</span>
-                                </td>
-                                <td>
-                                    <div class="box">
-                                        <md-checkbox ng-model="item.buy" ng-click="setCheked(item)" aria-label="Checkbox 1"></md-checkbox>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="listCont">
-                                        <img class="imgAlterQuantity" ng-click="alterQuantity(item,'-')" src="../../assets/icons/remove.png" alt="">
-                                        <span id="textQuantity">{{item.quantity }}</span>
-                                        <img class="imgAlterQuantity" ng-click="alterQuantity(item,'+')" src="../../assets/icons/add.png" alt="">
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </md-card-content>
-            </md-card>
-
-        </div>
-        <div flex layout="column">
-            <md-card>
-                <md-card-title style="background-color:#3F51B5">
-                    <md-card-title-text>
-                        <span class="md-headline">Items</span>
-                        <span class="md-subhead">Add itens</span>
-                    </md-card-title-text>
-                </md-card-title>
-
-                <md-content layout-padding>
-                    <form name="formItem" novalidate>
-                        <div layout="row">
-                            <md-input-container flex="50">
-                                <label>Procut Name</label>
-                                <input required name="product" ng-model="myItem.product">
-                                <div ng-show="formItem.product.$invalid">
-                                    <div ng-messages="formItem.product.$error">
-                                        <div ng-message="required">This is required.</div>
-                                    </div>
-                                </div>
-                            </md-input-container>
-
-                            <md-input-container flex="50">
-                                <label>Quantity</label>
-                                <input type="number" required name="quantity" ng-model="myItem.quantity">
-                                <div ng-show="formItem.quantity.$invalid">
-                                    <div ng-messages="formItem.quantiy.$error">
-                                        <div ng-message="required">This is required.</div>
-                                    </div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container>
-                                <label>Priority</label>
-                                <md-select ng-model="value">
-                                    <md-option><em>None</em></md-option>
-                                    <md-option ng-repeat="value in priority" ng-value="value" >
-                                        {{value}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-
+                        <div class="removeProductDark actionsProducts" ng-click="removeProduct($index)">
+                            <i class="material-icons">remove_circle</i>
                         </div>
 
 
-                        <div>
-                            <md-button class="md-raised md-primary " type="submit" ng-click="setItem()" ng-disabled="formItem.product.$invalid || formItem.quantity.$invalid ">
-                                Add</md-button>
+                    </td>
+                </tr>
+                <tr ng-if="$even" style="background-color:#FFFFFF">
+                    <td>
+
+                        <span> {{item.product }}</span>
+                    </td>
+                    <td>
+                        <div class="box">
+                            <md-checkbox ng-model="item.buy" ng-click="setCheked(item)" aria-label="Checkbox 1"></md-checkbox>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="listCont">
+                            <img class="imgAlterQuantity" ng-click="alterQuantity(item,'-')" src="../../assets/icons/remove.png" alt="">
+                            <span id="textQuantity">{{item.quantity }}</span>
+                            <img class="imgAlterQuantity" ng-click="alterQuantity(item,'+')" src="../../assets/icons/add.png" alt="">
+                        </div>
+                    </td>
+                    <td>
+                        {{item.priority}}
+                    </td>
+                    <td>
+                        <div class="actionsProducts removeProductLight" ng-click="removeProduct($index)">
+                            <i class="material-icons">remove_circle</i>
                         </div>
 
-                    </form>
-                </md-content>
-            </md-card>
-        </div>
-    </md-content>
-</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-card-content>
+</md-card>

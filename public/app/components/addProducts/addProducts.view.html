@@ -1,0 +1,55 @@
+<md-card>
+    <md-card-title style="background-color:#3F51B5">
+        <md-card-title-text>
+            <span class="md-headline">Items</span>
+            <span class="md-subhead">Add itens</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <md-content layout-padding>
+        <form name="formItem" novalidate>
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>Procut Name</label>
+                    <input required name="product" ng-model="myItem.product">
+                    <div ng-show="formItem.product.$invalid">
+                        <div ng-messages="formItem.product.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container flex="50">
+                    <label>Quantity</label>
+                    <input type="number" required name="quantity" ng-model="myItem.quantity">
+                    <div ng-show="formItem.quantity.$invalid">
+                        <div ng-messages="formItem.quantiy.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Priority</label>
+                    <md-select ng-model="value">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="value in priority" ng-value="value">
+                            {{value}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+            </div>
+
+
+            <div>
+                <md-button  class="md-raised md-primary " type="submit" ng-click="setItem(waiting)" ng-disabled="formItem.product.$invalid || formItem.quantity.$invalid ">
+                    Add</md-button>
+                <md-button class="md-raised md-primary "ng-click="setItem('back')" ng-disabled="formItem.product.$invalid || formItem.quantity.$invalid ">
+                  Add and Back </md-button>
+                <md-button ng-href="#/" class="md-raised md-primary"  >
+                  Back</a></md-button>
+            </div>
+
+        </form>
+    </md-content>
+</md-card>
